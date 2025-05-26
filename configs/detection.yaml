@@ -1,0 +1,24 @@
+data:
+  train: data/annotations/train.txt
+  val: data/annotations/val.txt
+  test: data/annotations/test.txt
+
+model:
+  path: models/detector/yolov7-w6.pt
+  pretrained: true
+  type: yolov7-w6
+
+training:
+  epochs: 50
+  batch_size: 8  # Reduced for YOLOv7-W6 (larger model)
+  learning_rate: 0.01
+  conf_threshold: 0.25
+  img_size: 1280  # YOLOv7-W6 optimal input size
+
+quantization:
+  type: int8
+  calibrator: entropy
+
+output:
+  detection_json: temp/detection.json
+  crop_dir: temp/crops

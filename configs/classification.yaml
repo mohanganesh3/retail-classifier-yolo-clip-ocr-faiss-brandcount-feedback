@@ -1,0 +1,26 @@
+data:
+  prototypes: data/prototypes
+  meta_csv: data/meta.csv
+
+model:
+  visual_backbone: mobilenet_v3_small
+  text_backbone: distilbert-base-uncased
+  embedding_dim: 512
+
+training:
+  epochs: 20
+  batch_size: 32
+  learning_rate: 0.001
+  arcface_s: 30.0
+  arcface_m: 0.50
+  hal_weight: 0.1
+  contrastive_weight: 0.3
+
+faiss:
+  index_type: flat_l2
+  dimension: 512
+
+output:
+  index_path: models/faiss_index/index.bin
+  labels_path: models/faiss_index/labels.pt
+  classification_json: temp/classification_results.json
